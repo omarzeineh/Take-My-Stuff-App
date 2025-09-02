@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="text-center">Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-grid class="center-content">
+    <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100%;">
+      <ion-col size-md="6" size-lg="4" size-sm="8" size-xs="10">
+        <ion-item lines="none" color="light" class="input-item">
+          <ion-input type="text" placeholder="Name" required [(ngModel)]="name"></ion-input>
+        </ion-item>
+        <ion-item lines="none" color="light" class="input-item">
+          <ion-input type="text" placeholder="Email" required [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item lines="none" color="light" class="input-item">
+          <ion-input id="password" [type]="passwordField" placeholder="Password" required [(ngModel)]="password">
+            <ion-button fill="clear" slot="end" (click)="togglePassword()">
+              <ion-icon [name]="passwordField === 'text'? 'eye-off' : 'eye'"></ion-icon>
+            </ion-button>
+          </ion-input>
+        </ion-item>
+        <ion-item lines="none" color="light" class="input-item">
+          <ion-input id="password" [type]="passwordField" placeholder="Confirm Password" required [(ngModel)]="confirmPassword">
+            <ion-button fill="clear" slot="end" (click)="togglePassword()">
+              <ion-icon [name]="passwordField === 'text'? 'eye-off' : 'eye'"></ion-icon>
+            </ion-button>
+          </ion-input>
+        </ion-item>
+       
+        <div class="button-container">
+          <ion-button expand="block" (click)="signup()">Sign Up</ion-button>
+          <ion-button expand="block" color="medium" (click)="navib()">Back</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

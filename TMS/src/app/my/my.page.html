@@ -1,0 +1,148 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">My Posts And Requests</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-fab slot="fixed" vertical="top" horizontal="start" [edge]="true">
+    <ion-fab-button (click)="sigOut()" size="small">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab slot="fixed" vertical="top" horizontal="end" [edge]="true">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="bottom">
+      <ion-fab-button (click)="naviCP()">
+        <ion-icon name="paper-plane"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button (click)="naviCR()">
+        <ion-icon name="chatbox"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title> My Posts </ion-card-title>
+    </ion-card-header>
+
+    <ion-list *ngFor="let Item of plist; index as i">
+      <ion-card>
+        <img src="{{Item.base64im}}" />
+        <ion-card-header>
+        <ion-item>
+          <ion-card-title> {{Item.title}} </ion-card-title>
+          <ion-button color="danger" slot="end" (click)="removeItemFromList(Item)" expand="block">x</ion-button>
+        </ion-item>
+        </ion-card-header>
+
+      <ion-card-content>
+        Type: {{Item.typee}}
+      </ion-card-content>
+      <ion-card-content>
+        Description: {{Item.description}}
+      </ion-card-content>
+      <ion-card-content>
+        Available Times: {{Item.a_times}}
+      </ion-card-content>
+      <ion-card-content *ngIf="Item.av == true">
+        Booked: No
+      </ion-card-content>
+      <ion-card-content *ngIf="Item.av == false">
+        Booked: Yes
+      </ion-card-content>
+
+
+      </ion-card>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title> My Requests </ion-card-title>
+    </ion-card-header>
+
+    <ion-list *ngFor="let rItem of rlist; index as i">
+      <ion-card>
+        <ion-card-header>
+        <ion-item>
+          <ion-card-title> {{rItem.title}} </ion-card-title>
+          <ion-button (click)="removeRequest(rItem)" color="danger" slot="end" expand="block">x</ion-button>
+        </ion-item>
+        </ion-card-header>
+
+        <ion-card-content>
+          Type: {{rItem.typee}}
+        </ion-card-content>
+        <ion-card-content>
+          Description: {{rItem.description}}
+        </ion-card-content>
+        <ion-card-content>
+          Available Times: {{rItem.a_times}}
+        </ion-card-content>
+
+      </ion-card>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title> My Bookings </ion-card-title>
+    </ion-card-header>
+
+    <ion-list *ngFor="let Item of bookings; index as i">
+      <ion-card>
+        <img src="{{Item.base64im}}" />
+        <ion-card-header>
+        <ion-item>
+          <ion-card-title> {{Item.title}} </ion-card-title>
+        </ion-item>
+        </ion-card-header>
+
+      <ion-card-content>
+        Type: {{Item.typee}}
+      </ion-card-content>
+      <ion-card-content>
+        Description: {{Item.description}}
+      </ion-card-content>
+      <ion-card-content>
+        Available Times: {{Item.a_times}}
+      </ion-card-content>
+      <ion-button fill="clear" (click)="unbook(Item)">Unbook</ion-button>
+      <ion-button fill="clear" (click)="onMap(Item)">On Map</ion-button>
+
+      </ion-card>
+    </ion-list>
+  </ion-card>
+  
+</ion-content>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button (click)="navimy()">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="navipost()">
+      <ion-icon name="paper-plane"></ion-icon>
+      <ion-label>Posts</ion-label>
+    </ion-tab-button>
+      <ion-tab-button (click)="navireq()">
+        <ion-icon name="chatbox"></ion-icon>
+        <ion-label>Requests</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="navinotify()">
+      <ion-icon name="notifications-outline"></ion-icon>
+      <ion-label>Feed</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>
+
+

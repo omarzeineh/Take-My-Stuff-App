@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Maps</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+
+  <ion-fab slot="fixed" vertical="top" horizontal="start" [edge]="true">
+  <ion-fab-button (click)="navipost()" size="small">
+    <ion-icon name="arrow-back"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+
+<div #map id="map"></div>
+</ion-content>

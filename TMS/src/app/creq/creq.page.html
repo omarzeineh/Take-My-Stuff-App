@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Create Request</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item expand="block">
+    <ion-input [(ngModel)]="rTitle" placeholder="Enter the Title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-select label="Default label" placeholder="Item Type" [(ngModel)]="rType">
+      <ion-select-option *ngFor="let type of t; index as i" value="{{t[i]}}">{{t[i]}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item expand="block">
+    <ion-input [(ngModel)]="rdesc" placeholder="Enter the Description"></ion-input>
+  </ion-item>
+  <ion-item expand="block">
+    <ion-input [(ngModel)]="rtime" placeholder="Enter the Time"></ion-input>
+  </ion-item>
+
+    <ion-button (click)="createRequest()" expand="block">Create The Request</ion-button>
+
+    
+  </ion-content>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="navimy()">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        <ion-label>Profile</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click)="navipost()">
+        <ion-icon name="paper-plane"></ion-icon>
+        <ion-label>Posts</ion-label>
+      </ion-tab-button>
+        <ion-tab-button (click)="navireq()">
+          <ion-icon name="chatbox"></ion-icon>
+          <ion-label>Requests</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click)="navinotify()">
+        <ion-icon name="notifications-outline"></ion-icon>
+        <ion-label>Feed</ion-label>
+    </ion-tab-button>
+</ion-tab-bar>

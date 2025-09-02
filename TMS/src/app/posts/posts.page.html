@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">posts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-fab slot="fixed" vertical="top" horizontal="start" [edge]="true">
+    <ion-fab-button (click)="sigOut()" size="small">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title> All Posts </ion-card-title>
+    </ion-card-header>
+
+    <ion-list *ngFor="let Item of plist; index as i">
+      <ion-card *ngIf="Item.av == true">
+        <img src="{{Item.base64im}}" />
+        <ion-card-header>
+          <ion-card-title> {{Item.title}} </ion-card-title>
+        </ion-card-header>
+
+      <ion-card-content>
+        {{Item.typee}}
+      </ion-card-content>
+      <ion-card-content>
+        {{Item.description}}
+      </ion-card-content>
+      <ion-card-content>
+        {{Item.a_times}}
+      </ion-card-content>
+      
+      <ion-button fill="clear" (click)="book(Item)">Book</ion-button>
+      <ion-button fill="clear" (click)="onMap(Item)">On Map</ion-button>
+      </ion-card>
+    </ion-list>
+  </ion-card>
+
+</ion-content>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button (click)="navimy()">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="navipost()">
+      <ion-icon name="paper-plane"></ion-icon>
+      <ion-label>Posts</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="navireq()">
+        <ion-icon name="chatbox"></ion-icon>
+        <ion-label>Requests</ion-label>
+    </ion-tab-button>
+    <ion-tab-button (click)="navinotify()">
+      <ion-icon name="notifications-outline"></ion-icon>
+      <ion-label>Feed</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
